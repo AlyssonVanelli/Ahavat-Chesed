@@ -1,0 +1,42 @@
+<%- include('partials/header.html') %>
+
+
+    <section class="outras-noticias">
+        <div class="title-outras-noticia">
+            <div class="completas">
+                <% for (let i=0; i < noticias.length; i++) { %>
+                    <div class="box-ultima-completas">
+                        <div class="imgcategory">
+                            <a href="/noticia/<%= noticias[i].slug %>" class="Linktext"><img
+                                    src="../public/images/<%= noticias[i].image %>" alt="" />
+                                <div class="category-img">
+                                    <p><%- noticias[i].categoria %></p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="conteudo-noticia-single">
+                            <a href="/noticia/<%= noticias[i].slug %>" class="Linktext">
+                                <h2>
+                                    <%- noticias[i].titulo %>
+                                </h2>
+                            </a>
+                            <a href="/noticia/<%= noticias[i].slug %>" class="Linktext">
+                                <p>
+                                    <%- noticias[i].conteudoCurto %>
+                                </p>
+                            </a>
+                        </div>
+                        <a class="gotonotice" href="/noticia/<%= noticias[i].slug %>">Continue Lendo...</a>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <%- include('partials/footer.html') %>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>

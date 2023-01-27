@@ -1,0 +1,60 @@
+
+    <div class="hora">
+        <img src="../../public/images/icons/clock.png" alt="">
+        <h2>Acendimento das Velas</h2>
+    </div>
+
+    <div class="horainput">
+        <form id="search-form2" class="form-inline my-2 my-lg-0 search2" >
+            <input type="text" id="search" class="form-control mr-sm-2 city" placeholder="Digite a cidade">
+            <button class="btn my-2 my-sm-0 button" type="submit">
+            <i class="fas fa-search"></i>
+            </button>
+        </form>
+        <p class="pordosol"></p>
+    </div>
+
+<script>
+
+    var button = document.querySelector('.button')
+
+    button.addEventListener('click', function(evt){
+        evt.preventDefault();
+        var city = document.querySelector('.city').value;
+
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5256b787a7141d9782a571959b5de2f3&units=metric&lang=pt_br`)
+        .then(response => response.json())
+        .then(data => {
+
+            console.log(data)
+
+            function formatDate(date) {
+                const h = date.getHours();
+                const mi = date.getMinutes();
+
+                return `${h}:${mi}`;
+            }
+
+            function newDate (data) {
+                var pordosol = document.querySelector('.pordosol');
+                pordosol.innerHTML = data;
+            }
+
+            var unix_timestamp2 = data['sys']['sunset'] * 1000
+            const date = new Date(unix_timestamp2);
+            date.setMinutes(date.getMinutes() - 18)
+
+            newDate(formatDate(date));
+
+        })
+
+        .catch(err =>{
+            alert("Cidade não localizada")
+        })
+
+    })
+
+</script>
+
+</body>
+</html>

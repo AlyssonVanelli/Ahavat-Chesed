@@ -1,0 +1,35 @@
+<div class="date">
+
+    <img src="../../public/images/icons/calendario.png" alt="">
+    <p class="day"></p>
+
+    <p class="dateHebcal">
+        <script src="https://www.hebcal.com/etc/hdate-en.js">
+        </script>
+    </p>
+
+</div>
+
+<div class="holiday">
+
+</div>
+
+<script>
+
+    var semana = ["Domingo, ", "Segunda,", "Terça,", "Quarta,", "Quinta,", "Sexta,", "Sábado,"];
+
+    var d = new Date();
+
+    const newsemana = semana[d.getDay()];
+
+    const textDate = document.querySelector(".dateHebcal").innerText
+
+    const replace = textDate.replace("th", "").replace("of", "de").replace("\n", "").replace("\n", "");
+
+    const newDateString = `${newsemana} ${replace}`
+
+    document.querySelector(".dateHebcal").remove();
+
+    document.querySelector(".day").innerText = newDateString
+
+</script>

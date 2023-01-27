@@ -1,0 +1,162 @@
+<%- include('partials/header.html') %>
+
+    <section style="margin-bottom: 20px;" class="noticia-destaque">
+        <div class="img-destaque">
+            <div class="title-destaque-descricao">
+                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <% for (let i=0; i < destaques.length; i++) { %>
+                            <div class="carousel-item active" data-bs-interval="5000">
+                                <a href="<%= destaques[i].url %>"><img src="../public/images/<%= destaques[i].image %>" class="d-block w-100"
+                                    alt="<%= destaques[i].titulo %>" /></a>
+                            </div>
+                        <% } %>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="margin-bottom: 20px;"" class="img-destaque-mobile">
+        <div class="title-destaque-descricao">
+            <div id="carouselExampleFadeMobile" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <% for (let i=0; i < destaquesMobile.length; i++) { %>
+                        <div class="carousel-item active" data-bs-interval="5000">
+                            <a href="<%= destaques[i].url %>"><img src="../public/images/<%= destaquesMobile[i].image %>" class="d-block w-100"
+                                alt="<%= destaquesMobile[i].titulo %>" /></a>   
+                        </div>
+                    <% } %>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFadeMobile"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFadeMobile"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-container">
+        <div class="col-md-12">
+            <div class="row">
+                <section class="outras-noticias">
+                    <div class="title-outras-noticia">
+                        <div class="center">
+                            <div class="informacoes">
+                                <h1>INFORMACÕES</h1>
+                                <div class="informacoes-main">
+                                    <div class="informacoestitle">
+                                        <img src="../public/images/icons/live.png" alt="">
+                                        <h2>Horário das transmissões</h2>
+                                    </div>
+                                    <% for (let i=0; i < horarios.length; i++) { %>
+                                        <div class="transmissoes">
+                                            <p class="transmissoes-title">
+                                                <%= horarios[i].titulo %>
+                                            </p>
+                                            <p class="transmissoes-horario">
+                                                <%= horarios[i].horario %>
+                                            </p>
+                                        </div>
+                                        <% } %>
+                                            <%- include('partials/date.html') %>
+                                                <%- include('partials/por-do-sol.html') %>
+                                                    <%- include('partials/hebcal.html') %>
+                                </div>
+                            </div>
+                            <div class="ultimas">
+                                <h2>POSTAGENS</h2>
+                                <div class="ultimas-cards">
+                                    <% for (let i=0; i < posts.length; i++) { %>
+                                        <div class="box-ultima-single">
+                                            <div class="imgcategory">
+                                                <a href="/post/<%= posts[i].slug %>"><img
+                                                        src="../public/images/<%= posts[i].image %>"
+                                                        alt="<%- posts[i].titulo %>" />
+                                                    <div class="category-img">
+                                                        <p><%- posts[i].categoria %></p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="conteudo-noticia-single">
+                                                <a href="/post/<%= posts[i].slug %>" class="Linktext">
+                                                    <h2>
+                                                        <%- posts[i].titulo %>
+                                                    </h2>
+                                                </a>
+                                                <a href="/post/<%= posts[i].slug %>" class="Linktext">
+                                                    <p>
+                                                        <%- posts[i].conteudoCurto %>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <a class="gotonotice" href="/post/<%= posts[i].slug %>">Continue
+                                                Lendo...</a>
+                                        </div>
+                                        <% } %>
+                                </div>
+                                <div class="vejamaisbutton">
+                                    <a href="/postagens">Veja Mais</a>
+                                </div>
+                                <h2 style="margin-top: 50px">NOTICIAS</h2>
+                                <div class="ultimas-cards">
+                                    <% for (let i=0; i < noticias.length; i++) { %>
+                                        <div class="box-ultima-single">
+                                            <div class="imgcategory">
+                                                <a href="/noticia/<%= noticias[i].slug %>" class="Linktext"><img
+                                                        src="../public/images/<%= noticias[i].image %>" alt="" />
+                                                    <div class="category-img">
+                                                        <p><%- noticias[i].categoria %></p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="conteudo-noticia-single">
+                                                <a href="/noticia/<%= noticias[i].slug %>" class="Linktext">
+                                                    <h2>
+                                                        <%- noticias[i].titulo %>
+                                                    </h2>
+                                                </a>
+                                                <a href="/noticia/<%= noticias[i].slug %>" class="Linktext">
+                                                    <p>
+                                                        <%- noticias[i].conteudoCurto %>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <a class="gotonotice" href="/noticia/<%= noticias[i].slug %>">Continue
+                                                Lendo...</a>
+                                        </div>
+                                        <% } %>
+                                </div>
+                                <div class="vejamaisbutton">
+                                    <a href="/noticias">Veja Mais</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer.html') %>
+
+        </body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
